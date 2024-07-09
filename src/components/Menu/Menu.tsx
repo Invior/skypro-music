@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./Menu.module.css";
 
-export const Menu = () => {
+const Menu = () => {
   return (
     <nav className={styles.mainNav}>
       <div className={styles.navLogo}>
@@ -40,3 +40,5 @@ export const Menu = () => {
     </nav>
   );
 };
+
+export default Menu;

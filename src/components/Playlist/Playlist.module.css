@@ -1,12 +1,21 @@
-.contentPlaylist {
+.centerblockContent {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
 }
 
-.playlist-title__col {
+.contentTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.playlistTitleCol {
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -16,7 +25,7 @@
   text-transform: uppercase;
 }
 
-.playlist-title__svg {
+.playlistTitleSvg {
   width: 12px;
   height: 12px;
   fill: transparent;
@@ -40,17 +49,10 @@
   text-align: end;
 }
 
-.playlist__item {
-  width: 100%;
-  display: block;
-  margin-bottom: 12px;
-}
-
-.playlist__track {
+.contentPlaylist {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  overflow-y: auto;
 }

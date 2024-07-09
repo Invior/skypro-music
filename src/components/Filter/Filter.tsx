@@ -1,7 +1,7 @@
 import styles from "./Filter.module.css";
 import classNames from "classnames";
 
-export const Filter = () => {
+const Filter = () => {
   return (
     <div className={styles.centerblockFilter}>
       <div className={styles.filterTitle}>Искать по:</div>
@@ -17,3 +17,5 @@ export const Filter = () => {
     </div>
   );
 };
+
+export default Filter;

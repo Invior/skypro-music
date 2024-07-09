@@ -1,7 +1,7 @@
 import styles from "./Sidebar.module.css";
 import Image from "next/image";
 
-export const Sidebar = () => {
+const Sidebar = () => {
   return (
     <>
       <div className={styles.mainSidebar}>
@@ -9,7 +9,7 @@ export const Sidebar = () => {
           <p className={styles.sidebarPersonalName}>Sergey.Ivanov</p>
           <div className={styles.sidebarIcon}>
             <svg>
-              <use xlinkHref="Image/icon/sprite.svg#logout" />
+              <use xlinkHref="/img/icon/sprite.svg#logout" />
             </svg>
           </div>
         </div>
@@ -54,3 +54,5 @@ export const Sidebar = () => {
     </>
   );
 };
+
+export default Sidebar;

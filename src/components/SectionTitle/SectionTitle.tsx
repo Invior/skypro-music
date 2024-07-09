@@ -1,5 +1,7 @@
 import styles from "./SectionTitle.module.css";
 
-export const SectionTitle = () => {
+const SectionTitle = () => {
   return <h2 className={styles.centerblockH2}>Треки</h2>;
 };
+
+export default SectionTitle;
