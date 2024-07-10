@@ -8,7 +8,19 @@
   }
   
   .mainCenterblock {
-    width: auto;
+    width: 700px;
     flex-grow: 3;
     padding: 20px 40px 20px 111px;
+    overflow: auto;
+    height: 800px;
+  }
+
+  .mainCenterblock::-webkit-scrollbar {
+    width: 5px;
+    background-color: #4B4949;
+  }
+
+  .mainCenterblock::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #ffffff;
   }
