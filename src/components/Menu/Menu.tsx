@@ -1,7 +1,12 @@
+'use client'
+import { useState } from "react";
 import Image from "next/image";
 import styles from "./Menu.module.css";
+import MenuLinks from "../MenuLinks/MenuLinks";
 
 const Menu = () => {
+const [isOpen, setIsOpen] = useState(false);
+
   return (
     <nav className={styles.mainNav}>
       <div className={styles.navLogo}>
@@ -13,30 +18,12 @@ const Menu = () => {
           height={17}
         />
       </div>
-      <div className={styles.navBurger}>
+      <div onClick={() => setIsOpen((prev) => !prev)} className={styles.navBurger}>
         <span className={styles.burgerLine} />
         <span className={styles.burgerLine} />
         <span className={styles.burgerLine} />
       </div>
-      <div className={styles.navMenu}>
-        <ul className={styles.menuList}>
-          <li className={styles.menuItem}>
-            <a href="#" className={styles.menuLink}>
-              Главное
-            </a>
-          </li>
-          <li className={styles.menuItem}>
-            <a href="#" className={styles.menuLink}>
-              Мой плейлист
-            </a>
-          </li>
-          <li className={styles.menuItem}>
-            <a href="../signin.html" className={styles.menuLink}>
-              Войти
-            </a>
-          </li>
-        </ul>
-      </div>
+      {isOpen && <MenuLinks />}
     </nav>
   );
 };

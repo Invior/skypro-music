@@ -1,0 +1,98 @@
+.filterButton {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    border: 1px solid #ffffff;
+    border-radius: 60px;
+    padding: 6px 20px;
+  }
+
+  .filterButton:not(:last-child) {
+    margin-right: 10px;
+  }
+
+.filterButton.active{
+  border-color: #d9b6ff;
+  color: #d9b6ff;
+  cursor: pointer;
+}
+
+  .btnText:hover {
+    border-color: #d9b6ff;
+    color: #d9b6ff;
+    cursor: pointer;
+  }
+
+  .btnText:active {
+    border-color: #ad61ff;
+    color: #ad61ff;
+    cursor: pointer;
+  }
+
+  .list {
+    margin-top: 10px;
+    background-color: rgb(49, 49, 49);
+    position: absolute;
+    width: 248px;
+    max-height: 305px;
+    border-radius: 12px;
+    text-align: center;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    overflow-y: scroll;
+  }
+
+  .list::-webkit-scrollbar {
+    width: 4px;
+    background-color: #4B4949;
+    border-radius: 10px;
+  }
+
+  .list::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #ffffff;
+  }
+
+  .listItem {
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  .listItem:hover {
+    color: rgb(173, 97, 255);
+    text-decoration: underline;
+  }  
+
+  .listItem:active {
+    color: rgb(173, 97, 255);
+    text-decoration: underline;
+  }  
+
+  .selectedFilterCount{
+  background-color: #ad61ff;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 13px;
+  top: -10px;
+  }
+  .active{
+    color: rgb(173, 97, 255);
+    text-decoration: underline;
+  }
+
+  .filetrBlock{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+  }

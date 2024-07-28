@@ -3,6 +3,18 @@
   display: -ms-flexbox;
   display: flex;
   flex-direction: column;
+  overflow: auto;
+  height: 800px;
+}
+
+.centerblockContent::-webkit-scrollbar {
+  width: 5px;
+  background-color: #4b4949;
+}
+
+.centerblockContent::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #ffffff;
 }
 
 .contentTitle {
@@ -54,5 +66,5 @@
   display: -ms-flexbox;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  height: 600px;
 }

@@ -5,20 +5,33 @@ import SectionTitle from "../SectionTitle/SectionTitle";
 import Filter from "../Filter/Filter";
 import Playlist from "../Playlist/Playlist";
 import Sidebar from "../Sidebar/Sidebar";
+import { getAllTracks } from "@/api/getAllTracks";
+import { TrackType } from "@/types/tracks";
 
-const Main = () => {
-    return (
-        <main className={styles.main}>
-            <Menu />
-            <div className={styles.mainCenterblock}>
-                <Search />
-                <SectionTitle />
-                <Filter />
-                <Playlist />
-            </div>
-            <Sidebar />
-        </main>
-        );
+async function Main() {
+  let tracks: TrackType[] = [];
+  let error = "";
+
+  try {
+    tracks = await getAllTracks();
+  } catch (err: unknown) {
+    error =
+      err instanceof Error
+        ? "Ошибка при загрузке треков: " + err.message
+        : "Неизвестная ошибка";
+  }
+  return (
+    <main className={styles.main}>
+      <Menu />
+      <div className={styles.mainCenterblock}>
+        <Search />
+        <SectionTitle />
+        <Filter tracks={tracks} />
+        {tracks.length === 0 ? <p>{error}</p> : <Playlist tracks={tracks} />}
+      </div>
+      <Sidebar />
+    </main>
+  );
 }
 
 export default Main;

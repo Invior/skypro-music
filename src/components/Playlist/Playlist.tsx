@@ -1,8 +1,13 @@
 import styles from "./Playlist.module.css";
 import classNames from "classnames";
 import Track from "../Track/Track";
+import { TrackType } from "@/types/tracks";
 
-const Playlist = () => {
+type PlaylistProps = {
+  tracks: TrackType[]
+}
+
+const Playlist = ({tracks}: PlaylistProps) => {
   return (
     <div className={styles.centerblockContent}>
       <div className={styles.contentTitle}>
@@ -16,11 +21,7 @@ const Playlist = () => {
         </div>
       </div>
       <div className={styles.contentPlaylist}>
-      <Track />
-      <Track />
-      <Track />
-      <Track />
-      <Track />
+        {tracks.map((track) => <Track key={track.id} track={track} />)}
       </div>
     </div>
   );
