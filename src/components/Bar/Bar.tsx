@@ -1,35 +1,103 @@
+'use client';
+import { useCurrentTrack } from "@/contexts/CurrentTrackProvider";
 import styles from "./Bar.module.css";
 import classNames from "classnames";
+import { useEffect, useRef, useState } from "react";
+import ProgressBar from "./ProgressBar/ProgressBar";
 
 const Bar = () => {
+    const { currentTrack } = useCurrentTrack();
+    const audioRef = useRef<HTMLAudioElement | null>(null);
+    const [currentTime, setCurrentTime] = useState<number>(0);
+    const [isPlaying, setIsPlaying] = useState<boolean>(false);
+    const [isLoop, setIsLoop] = useState<boolean>(false);
+
+    const togglePlay = () => {
+        if (audioRef.current) {
+            setIsPlaying(!isPlaying);
+        }
+    };
+
+    useEffect(() => {
+        if (isPlaying) {
+            audioRef.current?.pause();
+        } else {
+            audioRef.current?.play();
+        }
+    }, [isPlaying]);
+
+    const toggleLoop = () => {
+        if (audioRef.current) {
+            audioRef.current.loop = !isLoop;
+            setIsLoop((prev) => !prev);
+        }
+    };
+
+    const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (audioRef.current) {
+            audioRef.current.volume = Number(event.target.value);
+        }
+    };
+
+    const handleSeek = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (audioRef.current) {
+            audioRef.current.currentTime = Number(event.target.value);
+        }
+    };
+
+    if (!currentTrack) {
+        return null;
+    }
+    const { name, author, track_file } = currentTrack;
+    const duration = audioRef.current?.duration || 0;
+
+    function formatSeconds(seconds: number): string {
+        const flooredSeconds = Math.floor(seconds);
+        const minutes = Math.floor(flooredSeconds / 60);
+        const remainingSeconds = flooredSeconds % 60;
+        const formattedSeconds = remainingSeconds.toString().padStart(2, '0');
+        return `${minutes}:${formattedSeconds}`;
+    }
+
     return (
         <div className={styles.bar}>
+            <div className={styles.bar__currentTime}>
+                {formatSeconds(currentTime)} / {formatSeconds(duration)}
+            </div>
             <div className={styles.barContent}>
-                <div className={styles.barPlayerProgress} />
+                <audio
+                    autoPlay
+                    src={track_file}
+                    ref={audioRef}
+                    onTimeUpdate={(e) => {
+                        setCurrentTime(e.currentTarget.currentTime);
+                    }}
+                />
+                <ProgressBar max={duration} value={currentTime} step={0.01} onChange={handleSeek} />
                 <div className={styles.barPlayerBlock}>
                     <div className={styles.barPlayer}>
                         <div className={styles.playerControls}>
-                            <div className={styles.playerBtnPrev}>
+                            <div onClick={() => alert("Еще не реализовано!")} className={styles.playerBtnPrev}>
                                 <svg className={styles.playerBtnPrevSvg}>
                                     <use xlinkHref="/img/icon/sprite.svg#icon-prev" />
                                 </svg>
                             </div>
-                            <div className={classNames(styles.playerBtnPlay, styles.btn)}>
+                            <div onClick={togglePlay} className={classNames(styles.playerBtnPlay, styles.btn)}>
                                 <svg className={styles.playerBtnPlaySvg}>
-                                    <use xlinkHref="/img/icon/sprite.svg#icon-play" />
+                                    {isPlaying ? <use href="/img/icon/sprite.svg#icon-play" /> : <use href="/img/icon/sprite.svg#icon-pause" />}
                                 </svg>
                             </div>
-                            <div className={styles.playerBtnNext}>
+                            <div onClick={() => alert("Еще не реализовано!")} className={styles.playerBtnNext}>
                                 <svg className={styles.playerBtnNextSvg}>
                                     <use xlinkHref="/img/icon/sprite.svg#icon-next" />
                                 </svg>
                             </div>
-                            <div className={classNames(styles.playerBtnRepeat, styles.btnIcon)}>
-                                <svg className={styles.playerBtnRepeatSvg}>
+                            <div onClick={toggleLoop} className={classNames(styles.playerBtnRepeat, styles.btnIcon)}>
+                                <svg className={classNames(styles.playerBtnRepeatSvg, isLoop ? styles.playerBtnRepeatSvgActive : null)}>
                                     <use xlinkHref="/img/icon/sprite.svg#icon-repeat" />
                                 </svg>
                             </div>
-                            <div className={classNames(styles.playerBtnShuffle, styles.btnIcon)}>
+                            <div onClick={() => alert("Еще не реализовано!")} className={classNames(styles.playerBtnShuffle, styles.btnIcon)}>
                                 <svg className={styles.playerBtnShuffleSvg}>
                                     <use xlinkHref="/img/icon/sprite.svg#icon-shuffle" />
                                 </svg>
@@ -44,22 +112,22 @@ const Bar = () => {
                                 </div>
                                 <div className={styles.trackPlayAuthor}>
                                     <a className={styles.trackPlayAuthorLink} href="http://">
-                                        Ты та...
+                                        {name}
                                     </a>
                                 </div>
                                 <div className={styles.trackPlayAlbum}>
                                     <a className={styles.trackPlayAlbumLink} href="http://">
-                                        Баста
+                                        {author}
                                     </a>
                                 </div>
                             </div>
                             <div className={styles.trackPlayLikeDis}>
-                                <div className={classNames(styles.trackPlayLike, styles.btnIcon)}>
+                                <div onClick={() => alert("Еще не реализовано!")} className={classNames(styles.trackPlayLike, styles.btnIcon)}>
                                     <svg className={styles.trackPlayLikeSvg}>
                                         <use xlinkHref="/img/icon/sprite.svg#icon-like" />
                                     </svg>
                                 </div>
-                                <div className={classNames(styles.trackPlayDislike, styles.btnIcon)}>
+                                <div onClick={() => alert("Еще не реализовано!")} className={classNames(styles.trackPlayDislike, styles.btnIcon)}>
                                     <svg className={styles.trackPlayDislikeSvg}>
                                         <use xlinkHref="/img/icon/sprite.svg#icon-dislike" />
                                     </svg>
@@ -79,6 +147,11 @@ const Bar = () => {
                                     className={classNames(styles.volumeProgressLine, styles.btn)}
                                     type="range"
                                     name="range"
+                                    min="0"
+                                    max="1"
+                                    step="0.01"
+                                    value={audioRef.current?.volume || 0}
+                                    onChange={handleVolumeChange}
                                 />
                             </div>
                         </div>

@@ -3,6 +3,8 @@
   display: -ms-flexbox;
   display: flex;
   flex-direction: column;
+  overflow: auto;
+  height: 500px;
 }
 
 .contentTitle {
@@ -13,6 +15,7 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 24px;
+  margin-right: 40px;
 }
 
 .playlistTitleCol {
@@ -55,4 +58,14 @@
   display: flex;
   flex-direction: column;
   height: 600px;
+}
+
+.centerblockContent::-webkit-scrollbar {
+  width: 5px;
+  background-color: #4B4949;
+}
+
+.centerblockContent::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #ffffff;
 }

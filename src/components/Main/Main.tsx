@@ -18,17 +18,17 @@ async function Main() {
         error = err instanceof Error ? "Ошибка при загрузке треков " + err.message : "Неизвестная ошибка";
     }
     return (
-        <main className={styles.main}>
-            <Menu />
-            <div className={styles.mainCenterblock}>
-                <Search />
-                <SectionTitle />
-                <Filter tracks={tracks}/>
-                <Playlist tracks={tracks}/>
-            </div>
-            <Sidebar />
-        </main>
-        );
+            <main className={styles.main}>
+                <Menu />
+                <div className={styles.mainCenterblock}>
+                    <Search />
+                    <SectionTitle />
+                    <Filter tracks={tracks} />
+                    <Playlist tracks={tracks} />
+                </div>
+                <Sidebar />
+            </main>
+    );
 }
 
 export default Main;
