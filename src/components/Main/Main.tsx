@@ -9,8 +9,8 @@ import { getAllTracks } from "@/api/getAllTracks";
 import { TrackType } from "@/types/tracks";
 
 async function Main() {
-    let tracks: TrackType[] = [];
-    let error = "";
+  let tracks: TrackType[] = [];
+  let error = "";
 
     try {
         tracks = await getAllTracks()

@@ -14,7 +14,9 @@ const Wrapper = () => {
                 <footer className={styles.footer} />
             </div>
         </div>
-    );
-}
+      </div>
+    </>
+  );
+};
 
 export default Wrapper;
