@@ -7,7 +7,7 @@ type PlaylistProps = {
   tracks: TrackType[]
 }
 
-const Playlist = ({tracks}: PlaylistProps) => {
+const Playlist = ({ tracks }: PlaylistProps) => {
   return (
     <div className={styles.centerblockContent}>
       <div className={styles.contentTitle}>
@@ -21,7 +21,7 @@ const Playlist = ({tracks}: PlaylistProps) => {
         </div>
       </div>
       <div className={styles.contentPlaylist}>
-        {tracks.map((track) => <Track key={track.id} track={track} />)}
+        {tracks.map((track) => <Track key={track.id} track={track} tracks={tracks} />)}
       </div>
     </div>
   );

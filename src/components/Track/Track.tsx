@@ -2,26 +2,36 @@
 import { TrackType } from "@/types/tracks";
 import styles from "./Track.module.css";
 import { formatTime } from "../../types/time";
-import { useCurrentTrack } from "@/contexts/CurrentTrackProvider";
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import { setCurrentTrack, setIsPlaying } from "@/store/features/playlistSlice";
+import classNames from "classnames";
 
 type TrackProps = {
-    track: TrackType
+    track: TrackType,
+    tracks: TrackType[]
 }
 
-const Track = ({ track }: TrackProps) => {
-    const { setCurrentTrack } = useCurrentTrack();
-    const { name, author, album, duration_in_seconds } = track;
+const Track = ({ track, tracks }: TrackProps) => {
+    const { name, author, album, duration_in_seconds, id } = track;
+    const dispatch = useAppDispatch();
+    const isPlaying = useAppSelector((state) => state.playlist.isPlaying);
+    const currentTrack = useAppSelector((state) => state.playlist.currentTrack);
+    const isCurrentTrack = currentTrack ? currentTrack.id === id : false;
 
     const handleTrackClick = () => {
-        setCurrentTrack(track);
-    }
+        dispatch(setCurrentTrack({ track, tracks }));
+        dispatch(setIsPlaying(true));
+    };
     return (
         <div onClick={handleTrackClick} className={styles.playlistItem}>
             <div className={styles.playlistTrack}>
                 <div className={styles.trackTitle}>
                     <div className={styles.trackTitleImage}>
-                        <svg className={styles.trackTitleSvg}>
-                            <use xlinkHref="/img/icon/sprite.svg#icon-note" />
+                        <svg className={classNames(styles.trackTitleSvg, {
+                            [styles.playingDot]: isPlaying && isCurrentTrack,
+                        })}>
+                            <use xlinkHref={`img/icon/sprite.svg#${isCurrentTrack ? "icon-isplaying" : "icon-note"
+                                }`} />
                         </svg>
                     </div>
                     <div className={styles.trackTitleText}>
