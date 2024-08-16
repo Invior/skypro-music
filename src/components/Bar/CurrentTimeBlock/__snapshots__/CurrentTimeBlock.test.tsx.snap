@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Компонент Navigation Должен отрендерить логотип 1`] = `
+<div
+  className="timeBlock"
+>
+  0:02 / 2:15
+</div>
+`;

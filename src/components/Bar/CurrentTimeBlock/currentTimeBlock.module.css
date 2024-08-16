@@ -1,0 +1,11 @@
+.timeBlock {
+    width: 150px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: right;
+    color: #ffffff;
+    padding: 10px 30px;
+    box-sizing: border-box;
+}

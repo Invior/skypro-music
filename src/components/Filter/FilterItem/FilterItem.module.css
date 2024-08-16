@@ -1,98 +1,94 @@
+.counter {
+  position: absolute;
+  border: 1px solid #ad61ff;
+  border-radius: 60px;
+  z-index: 1;
+  height: 26px;
+  width: 26px;
+  line-height: 13px;
+  font-size: 13px;
+  padding: 6px;
+  transform: translate(-30%, -30%);
+  text-align: center;
+  background-color: #ad61ff;
+  font-family: "StratosSkyeng", Sans-serif;
+}
+
 .filterButton {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    border: 1px solid #ffffff;
-    border-radius: 60px;
-    padding: 6px 20px;
-  }
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  border: 1px solid #ffffff;
+  border-radius: 60px;
+  padding: 6px 20px;
+  color: #ffffff;
+  background-color: #1b1b1b;
+}
 
-  .filterButton:not(:last-child) {
-    margin-right: 10px;
-  }
+.filterButtonActive {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  border: 1px solid #ad61ff;
+  border-radius: 60px;
+  padding: 6px 20px;
+  color: #ad61ff;
+  background-color: #1b1b1b;
+}
 
-.filterButton.active{
+.btnText:hover {
   border-color: #d9b6ff;
   color: #d9b6ff;
   cursor: pointer;
 }
 
-  .btnText:hover {
-    border-color: #d9b6ff;
-    color: #d9b6ff;
-    cursor: pointer;
-  }
+.btnText:active {
+  border-color: #ad61ff;
+  color: #ad61ff;
+  cursor: pointer;
+}
 
-  .btnText:active {
-    border-color: #ad61ff;
-    color: #ad61ff;
-    cursor: pointer;
-  }
-
-  .list {
-    margin-top: 10px;
-    background-color: rgb(49, 49, 49);
-    position: absolute;
-    width: 248px;
-    max-height: 305px;
-    border-radius: 12px;
-    text-align: center;
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-    overflow-y: scroll;
-  }
-
-  .list::-webkit-scrollbar {
-    width: 4px;
-    background-color: #4B4949;
-    border-radius: 10px;
-  }
-
-  .list::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: #ffffff;
-  }
-
-  .listItem {
-    font-size: 20px;
-    font-weight: 400;
-  }
-
-  .listItem:hover {
-    color: rgb(173, 97, 255);
-    text-decoration: underline;
-  }  
-
-  .listItem:active {
-    color: rgb(173, 97, 255);
-    text-decoration: underline;
-  }  
-
-  .selectedFilterCount{
-  background-color: #ad61ff;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.filterBox {
+  min-width: 248px;
+  max-height: 305px;
   position: absolute;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 13px;
-  top: -10px;
-  }
-  .active{
-    color: rgb(173, 97, 255);
-    text-decoration: underline;
-  }
+  margin-top: 10px;
+  border: 12px;
+  background-color: #313131;
+  border-radius: 20px;
+  padding: 34px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff #4b4949;
+}
 
-  .filetrBlock{
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
-  }
+.filterList {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 50px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+}
+
+.filterList:hover {
+  color: #d9b6ff;
+  cursor: pointer;
+}
+
+.filterList:active {
+  color: #ad61ff;
+  cursor: pointer;
+}
+
+.filterListActive {
+  color: #ad61ff;
+  text-decoration: underline;
+}

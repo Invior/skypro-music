@@ -1,0 +1,105 @@
+.barVolumeBlock {
+  width: auto;
+  display: flex;
+  align-items: center;
+}
+  
+.volumeContent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+}
+  
+.volumeImage {
+  width: 13px;
+  height: 18px;
+  margin-right: 17px;
+}
+  
+.volumeSvg {
+  width: 15px;
+  height: 18px;
+  fill: transparent;
+}
+  
+.volumeProgress {
+  width: 159px;
+}
+
+/* .volumeProgressLine {
+  appearance: none;
+  border: 1px solid #797979;
+  width: 109px;
+  height: 2px;
+} */
+
+/* .volumeProgressLine::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: #1A1A1A;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #ffff;
+  border-radius: 12px;
+  cursor: pointer;
+} */
+  
+.volumeProgressLine {
+  width: 109px;
+  --progress-height: 5px;
+  --progress-color: #fff;
+  --progress-bg-color: #797979;
+  height: var(--progress-height);
+  appearance: none;
+  cursor: pointer;
+  background: transparent;
+  position: absolute;
+  top: 39px;
+  overflow: hidden;
+  transition: 0.2s;
+}
+
+.volumeProgressLine::-webkit-slider-runnable-track {
+  position: relative;
+  height: var(--progress-height);
+  background: var(--progress-bg-color);
+}
+  
+  .volumeProgressLine::-webkit-slider-thumb {
+    --thumb-height: 1px;
+    --thumb-width: 1px;
+    position: relative;
+    -webkit-appearance: none;
+    width: var(--thumb-width, var(--thumb-height));
+    box-shadow: calc(-100vmax - var(--thumb-width, var(--thumb-height))) 0 0
+      100vmax var(--progress-color);
+  }
+  
+  .volumeProgressLine::-webkit-slider-runnable-track {
+    background: var(--progress-bg-color);
+  }
+
+  .volumeProgressLine::-moz-range-track {
+    width: 100%;
+    height: var(--progress-height);
+    background: var(--progress-bg-color);
+    border: none;
+    border-radius: 0px;
+  }
+  
+  .volumeProgressLine::-moz-range-thumb {
+    border: none;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background: transparent;
+  }
+  
+  .volumeProgressLine::-moz-range-progress {
+    background-color: var(--progress-color);
+    height: var(--progress-height);
+  }
+
+.btn {
+    cursor: pointer;
+}
