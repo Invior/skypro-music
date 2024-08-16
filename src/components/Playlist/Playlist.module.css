@@ -1,71 +1,56 @@
 .centerblockContent {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-  height: 500px;
+    display: flex;
+    flex-direction: column;
+    height: 510px;
 }
 
 .contentTitle {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 24px;
-  margin-right: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
 }
 
 .playlistTitleCol {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: 2px;
-  color: #696969;
-  text-transform: uppercase;
-}
-
-.playlistTitleSvg {
-  width: 12px;
-  height: 12px;
-  fill: transparent;
-  stroke: #696969;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 2px;
+    color: #696969;
+    text-transform: uppercase;
 }
 
 .col01 {
-  width: 447px;
+    width: 447px;
 }
 
 .col02 {
-  width: 321px;
+    width: 321px;
 }
-
+  
 .col03 {
-  width: 245px;
+    width: 245px;
+}
+  
+.col04 {
+    width: 60px;
+    text-align: end;
 }
 
-.col04 {
-  width: 60px;
-  text-align: end;
+.playlistTitleSvg {
+    width: 12px;
+    height: 12px;
+    fill: transparent;
+    stroke: #696969;
 }
 
 .contentPlaylist {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-direction: column;
-  height: 600px;
-}
-
-.centerblockContent::-webkit-scrollbar {
-  width: 5px;
-  background-color: #4B4949;
-}
-
-.centerblockContent::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff #4B4949;
+    height: 700px;
 }

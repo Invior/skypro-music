@@ -1,37 +1,82 @@
+"use client";
 import classNames from "classnames";
-import styles from "./FilterItem.module.css"
-import FilterCount from "./FilterCount/FilterCount";
-
+import styles from "./filterItem.module.css";
+import { TrackType } from "@/types/tracks";
+import { useAppDispatch } from "@/store/store";
+import { setFilters } from "@/store/features/tracksSlice";
 
 type FilterItemProps = {
-    title: string;
-    list: string[];
-    isActive: boolean;
-    handleFilter: (filterName: string) => void;
-    filterName: string;
-    numberSelectedValues: number;
-}
+  title: string;
+  isActive: boolean;
+  handleFilterOpen: (newFilter: string) => void;
+  list: string[];
+  value: string;
+  selected: string[] | string;
+  tracks: TrackType[];
+};
 
-function FilterItem({ title, list, isActive, handleFilter, filterName, numberSelectedValues }: FilterItemProps) {
-    return (
-        <div>
-            <div className={styles.filetrBlock}>
-            <FilterCount numberSelectedValues={numberSelectedValues} />
-                <div onClick={() => handleFilter(filterName)} className={classNames(styles.filterButton, styles.btnText, { [styles.active]: isActive })}  >
-                    {title}
-                </div>
-            </div>
-            {isActive && (
-                <ul className={styles.list}>
-                    {list.map((item, index) => (
-                        <li className={classNames(styles.listItem)} key={index}>
-                            {item}
-                        </li>
-                    ))}
-                </ul>
-            )}
+export function FilterItem({
+  title,
+  isActive,
+  handleFilterOpen,
+  list,
+  value,
+  selected,
+  tracks,
+}: FilterItemProps) {
+  const dispatch = useAppDispatch();
+  
+  const handleFilter = (item: string) => {
+    if (value === "sort") {
+      dispatch(setFilters({sort: item}));
+      return;
+    }
+    if (selected instanceof Array) {
+      dispatch(
+        setFilters({
+          [value]: selected.includes(item)
+            ? selected.filter((el) => el !== item)
+            : [...selected, item],
+        })
+      );
+    }
+  };
+
+  return (
+    <div className={styles.filterWrapper}>
+      {selected.length > 0 && value !== "sort" ? (
+        <div className={styles.counter}>{selected.length}</div>
+      ) : null}
+      <button
+        onClick={() => handleFilterOpen(title)}
+        className={classNames(
+          isActive ? styles.filterButtonActive : styles.filterButton,
+          styles.btnText
+        )}
+      >
+        {title}
+      </button>
+
+      {isActive && (
+        <div className={styles.filterContainer}>
+          <ul className={styles.filterBox}>
+            {list.map((item) => (
+              <li key={item} className={classNames(styles.filterList, {
+                [styles.filterListActive]:
+                  value === "sort"
+                    ? selected === item
+                    : selected.includes(item),
+              })}>
+                <p
+                  onClick={() => handleFilter(item)}
+                >
+                  {item}
+                </p>
+              </li>
+            ))}
+          </ul>
         </div>
-    )
+      )}
+    </div>
+  );
 }
-
-export default FilterItem;

@@ -1,12 +1,14 @@
+import React from "react";
 import styles from "./ProgressBar.module.css";
 
 type ProgressBarProps = {
-  max: number,
-  value: number,
-  step?: number,
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+    max: number,
+    value: number,
+    step: number,
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
-export default function ProgressBar({ max, value, step, onChange }: ProgressBarProps) {
+
+const ProgressBar = React.memo(({ max, value, step, onChange }: ProgressBarProps) => {
   return (
     <input
       className={styles.styledProgressInput}
@@ -19,3 +21,7 @@ export default function ProgressBar({ max, value, step, onChange }: ProgressBarP
     />
   );
 }
+);
+
+ProgressBar.displayName = "ProgressBar";
+export default ProgressBar;

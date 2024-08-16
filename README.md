@@ -34,3 +34,5 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+В проекте была созданы следующие страницы: главная, авторизация, регистрация и страница избранных треков. Реализована подгрузка всех треков из API. Стили декомпозированы покомпонентно и используют CSS-модули. Глобальные стили размещены в globals.css. Также добавлена возможность фильтровать треки, изменять порядок а также искать по названию. Добавлены страницы подборок с треками этих подборок и одним общим Layout. Есть функция лайкать и убирать лайки трекам авторизованным пользователям. Добавлены тесты, проверяющие функциональность компонентов и функций. В плеере реализована функция управления треками, воспроизведение, повтор, перемешивание, изменение текущего времени в воиспреведении трека, а также изменение громкости.
