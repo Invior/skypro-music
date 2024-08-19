@@ -12,12 +12,12 @@ export function FavoriteTracks() {
   useEffect(() => {
     dispatch(setCurrentPlaylist(allTracks));
   }, [dispatch, allTracks]);
-
+  
   return (
     <>
-      <h2 className={styles.centerblockH2}>Мои треки</h2>
-      <Filter />
-      <Playlist  />
+    <h2 className={styles.centerblockH2}>Мои треки</h2>
+    <Filter />
+    <Playlist  />
     </>
   );
 }

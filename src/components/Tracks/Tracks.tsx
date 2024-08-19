@@ -19,16 +19,16 @@ export function Tracks() {
         dispatch(setIsLoading(false));
       })
     } catch (error) {
-      
+      alert(`Не удалось загрузить треки`);
     }
   }, [dispatch]);
   
   return (
     <>
-      {error && error}
-      <h2 className={styles.centerblockH2}>Треки</h2>
-      <Filter />
-      <Playlist />
+    {error && error}
+    <h2 className={styles.centerblockH2}>Треки</h2>
+    <Filter />
+    <Playlist />
     </>
   );
 }
