@@ -6,7 +6,7 @@ import { timeFormat } from "../../utils/helpers";
 import { useEffect } from "react";
 import classNames from "classnames";
 import { useAppDispatch, useAppSelector } from "@/store/store";
-import { setCurrentTrack } from "@/store/features/tracksSlice";
+import { setCurrentTrack, setIsPlaying } from "@/store/features/tracksSlice";
 import useLikeTrack from "@/hooks/useLikeTrack";
 
 type TrackProps = {
@@ -25,8 +25,19 @@ export function Track({ track }: TrackProps) {
   };
 
   useEffect(() => {
-    audioRef.current?.play();
-  }, [audioRef, currentTrack]);
+    if (audioRef.current && currentTrack) {
+      const handleCanPlay = () => {
+        audioRef.current?.play();
+        dispatch(setIsPlaying(true));
+      };
+
+
+      audioRef.current.addEventListener("canplay", handleCanPlay);
+      return () => {
+        audioRef.current?.removeEventListener("canplay", handleCanPlay);
+      };
+    }
+  }, [currentTrack]);
 
   const time = timeFormat(duration_in_seconds);
 
