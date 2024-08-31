@@ -30,8 +30,7 @@ export function Track({ track }: TrackProps) {
         audioRef.current?.play();
         dispatch(setIsPlaying(true));
       };
-
-
+      
       audioRef.current.addEventListener("canplay", handleCanPlay);
       return () => {
         audioRef.current?.removeEventListener("canplay", handleCanPlay);
